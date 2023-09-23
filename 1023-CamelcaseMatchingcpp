@@ -1,0 +1,8 @@
+// https://leetcode.com/problems/camelcase-matching/
+
+class Solution {
+public:
+    vector<bool> camelMatch(vector<string>& queries, string pattern) {
+        
+    }
+};
