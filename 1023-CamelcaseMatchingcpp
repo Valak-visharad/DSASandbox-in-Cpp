@@ -3,8 +3,22 @@
 class Solution {
 public:
     vector<bool> camelMatch(vector<string>& queries, string pattern) {
+        vector<bool> result;
+        for (int i = 0; i < queries.size(); i++) {
+            result.push_back(function(queries[i], pattern));
+        }
+        return result;
+    }
+    bool function(string query, string pattern) {
         int currPatternIndex = 0;
-
-        for (int i = 0; i < )
+        for (int i = 0; i < query.length(); i++) {
+            if (query[i] == pattern[currPatternIndex])
+                currPatternIndex++;
+            else if (97 <= int(query[i]) && int(query[i]) <= 122)
+                continue;
+            else
+                return false;
+        }
+        return (currPatternIndex == pattern.length() ? true : false);
     }
 };
