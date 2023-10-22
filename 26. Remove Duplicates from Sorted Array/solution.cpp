@@ -24,7 +24,6 @@ public:
             else
                 i++;
         }
-
         return k;
     }
 };
