@@ -11,29 +11,33 @@ public:
     {
         int n = grid[0].size();
         int m = grid.size();
-        // cout << n << m;
+        //cout << n << m;
 
         vector<vector<int>> p(n, vector<int>(m, 1));
 
-        // // cout << "p =>\n{";
+        // cout << "p =>\n{";
         // for (int i = 0; i < n; i++)
         // {
-        //     // cout << "{ ";
+        //     cout << "{ ";
         //     for (int j = 0; j < m; j++)
         //     {
-        //         // cout << p[i][j] << " ";
+        //         cout << p[i][j] << " ";
         //     }
-        //     // cout << " }\n";
+        //     cout << " }\n";
         // }
-        // // cout << "\n}";
+        // cout << "\n}";
 
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
-                // cout << "p[" << i << "][" << j << "] = " << p[i][j] << endl;
+                //cout << "p[" << i << "][" << j << "] = " << p[i][j] << endl;
                 for (int k = 0; k < n; k++)
                 {
+
+                    // p[i][j] *= grid[k][l];
+                    // for (int l = 0; l < m; l++)
+
                     for (int l = 0; l < m; l++)
                     {
                         if (i != k || j != l)
@@ -42,22 +46,22 @@ public:
                         }
                     }
                 }
-                // cout << "p[" << i << "][" << j << "] = " << p[i][j] << endl;
+                //cout << "p[" << i << "][" << j << "] = " << p[i][j] << endl;
             }
         }
 
 
-        // // cout << "p =>\n{";
+        //cout << "p =>\n{";
         // for (int i = 0; i < n; i++)
         // {
-        //     // cout << "{ ";
+        //     //cout << "{ ";
         //     for (int j = 0; j < m; j++)
         //     {
-        //         // cout << p[i][j] << " ";
+        //         cout << p[i][j] << " ";
         //     }
-        //     // cout << " }\n";
+        //     //cout << " }\n";
         // }
-        // // cout << "\n}";
+        //cout << "\n}";
 
 
         return p;
@@ -70,7 +74,18 @@ int main()
     Solution sol;
 
     vector<vector<int>> grid = {{1, 2}, {3, 4}};
-    sol.constructProductMatrix(grid);
+    vector<vector<int>> p = sol.constructProductMatrix(grid);
+
+    for (int i = 0; i < 2; i++)
+    {
+    //cout << "{ ";
+        for (int j = 0; j < 2; j++)
+        {
+            cout << p[i][j] << " ";
+        }
+    //cout << " }\n";
+    }
+
 
     return 0;
 }
