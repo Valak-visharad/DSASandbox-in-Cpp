@@ -1,33 +1,54 @@
 //{ Driver Code Starts
-//Initial Template for C
-
-#include<stdio.h>
+#include <bits/stdc++.h>
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 // } Driver Code Ends
-//User function Template for C
-
-int findTriplets(int arr[], int n)
+/* You are required to complete the function below
+*  arr[]: input array
+*  n: size of array
+*/
+class Solution{
+  public:
+    //Function to find triplets with zero sum.
+    bool findTriplets(int arr[], int n)
     { 
         sort(arr, arr + n);
-        
+
         for (int i = 0; i < n - 2; i++)
+        {
+            int left = i + 1;
+            int right = n - 1;
+
+            while (left < right)
+            {
+                int curr = arr[i] + arr[left] + arr[right];
+                if (curr == 0)
+                    return 1;
+                (curr < 0) ? left++ : right--; 
+            }
+        }
+        return 0;
     }
+};
 
 //{ Driver Code Starts.
 int main()
 {
     int t;
-	scanf("%d", &t);
+	cin>>t;
 	while(t--){
     	int n;
-    	scanf("%d", &n);
-    	int arr[n];
+    	cin>>n;
+    	int arr[n]={0};
     	for(int i=0;i<n;i++)
-    		scanf("%d", &arr[i]);
-        if(findTriplets(arr, n))
-            printf("1\n");
+    		cin>>arr[i];
+    	Solution obj;
+        if(obj.findTriplets(arr, n))
+            cout<<"1"<<endl;
         else 
-            printf("0\n");
+            cout<<"0"<<endl;
 	}
     return 0;
 }
