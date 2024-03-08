@@ -4,16 +4,28 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        sort(nums.begin(), nums.end());
+        vector <int> sortedNums = nums;
+        sort(sortedNums.begin(), sortedNums.end());
         int left = 0;
-        int right = nums.size() - 1;
+        int right = sortedNums.size() - 1;
         while (left < right) {
-            if (nums[left] + nums[right] == target)
+            if (sortedNums[left] + sortedNums[right] == target)
                 break;
-            else if (nums[left] + nums[right] < target)
+            else if (sortedNums[left] + sortedNums[right] < target)
                 left++;
-            else if (nums[left] + nums[right] > target)
+            else if (sortedNums[left] + sortedNums[right] > target)
                 right--;
+        }
+        bool leftNotFound = true, rightNotFound = true;
+        for (int i = 0; i < nums.size(); i++) {
+            if (leftNotFound && nums[i] == sortedNums[left]) {
+                left = i;
+                leftNotFound = false;
+            }
+            else if (rightNotFound && nums[i] == sortedNums[right] ) {
+                right = i;
+                rightNotFound = false;
+            }
         }
         return vector <int> {left, right};
     }
