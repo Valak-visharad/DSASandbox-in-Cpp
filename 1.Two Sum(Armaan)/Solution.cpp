@@ -17,17 +17,19 @@ public:
                 right--;
         }
         bool leftNotFound = true, rightNotFound = true;
+        int newLeft = -1, newRight = -1;
         for (int i = 0; i < nums.size(); i++) {
             if (leftNotFound && nums[i] == sortedNums[left]) {
-                left = i;
+                newLeft = i;
                 leftNotFound = false;
             }
-            else if (rightNotFound && nums[i] == sortedNums[right] ) {
-                right = i;
-                rightNotFound = false;
+            else if (rightNotFound && nums[i] == sortedNums[right]) {
+                newRight = i;
+                if (newRight != newLeft)
+                    rightNotFound = false;
             }
         }
-        return vector <int> {left, right};
+        return vector <int> {newLeft, newRight};
     }
 };  
 
